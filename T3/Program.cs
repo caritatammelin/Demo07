@@ -29,7 +29,7 @@ namespace T3
 
             foreach (Programme tv in readProgrammes)
             {
-                Console.WriteLine("Programmes are {0} {0}", tv.Name, tv.Channel, tv.BTime, tv.ETime, tv.Info);
+                Console.WriteLine("Programmes are {0} {1} {2} {3} {4}", tv.Name, tv.Channel, tv.BTime, tv.ETime, tv.Info);
             }
 
         }
