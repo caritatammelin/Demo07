@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace T3
 {
+    [Serializable]
     class Programme
     {
         public string Name { get; set; }
