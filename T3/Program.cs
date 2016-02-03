@@ -13,10 +13,10 @@ namespace T3
     {
         static void Main(string[] args)
         {
-            List<TV> programmes = new List<TV>();
-            Programme program = new Programme { Name = "X-Files", Channel = "Fox", BTime = 22.50, ETime = 23.50, Info = "Science fiction show" };
-            Programme program2 = new Programme{ Name = "Desperate Housewives", Channel = "Liv", BTime = 21.00, ETime = 22.00, Info = "Drama" };
-            Programme program3 = new Programme { Name = "Pokemon", Channel = "MTV3", BTime = 10.00, ETime = 10.25, Info = "Japanese animation" };
+            List<Programme> programmes = new List<Programme>();
+            programmes.Add(new Programme { Name = "X-Files", Channel = "Fox", BTime = 22.50, ETime = 23.50, Info = "Science fiction show" });
+            programmes.Add (new Programme{ Name = "Desperate Housewives", Channel = "Liv", BTime = 21.00, ETime = 22.00, Info = "Drama" });
+            programmes.Add (new Programme { Name = "Pokemon", Channel = "MTV3", BTime = 10.00, ETime = 10.25, Info = "Japanese animation" });
 
             Stream writeMultipleStream = new FileStream("MyTVs.bin", FileMode.Create, FileAccess.Write, FileShare.None);
             IFormatter formatter = new BinaryFormatter();
@@ -24,8 +24,13 @@ namespace T3
             writeMultipleStream.Close();
 
             Stream openStream = new FileStream("MyTVs.bin", FileMode.Open, FileAccess.Read, FileShare.Read);
-            List<TV> readProgrammes = (List<TV>)formatter.Deserialize(openStream);
+            List<Programme> readProgrammes = (List<Programme>)formatter.Deserialize(openStream);
             openStream.Close();
+
+            foreach (Programme tv in readProgrammes)
+            {
+                Console.WriteLine("Programmes are {0} {0}", tv.Name, tv.Channel, tv.BTime, tv.ETime, tv.Info);
+            }
 
         }
     }
