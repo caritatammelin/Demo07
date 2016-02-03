@@ -12,29 +12,25 @@ namespace T2
         {
             System.IO.StreamWriter outputFile1 = new System.IO.StreamWriter(@"d:\T2Integers");
             System.IO.StreamWriter outputFile2 = new System.IO.StreamWriter(@"d:\T2Doubless");
-            float number = 0;
-            
+            int number = 0;
+            bool result;
 
             
-            
-           // double dluku = double.Parse(line);
-
-           // luku = int.Parse(line)
-
+ 
             do
             {
                 Console.WriteLine("Give a number: ");
                 string line = Console.ReadLine();
-               bool onnistuiko = int.TryParse(line, out number);
-                if (onnistuiko == true)
+               result = int.TryParse(line, out number);
+                if (result)
                 {
                     
-                    outputFile1.WriteLine(number);
+                    outputFile1.WriteLine(line);
                 }
                 else 
                 {
                     
-                    outputFile2.WriteLine(number);
+                    outputFile2.WriteLine(line);
                 }
 
             } while (!number.Equals(""));
